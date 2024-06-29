@@ -1,0 +1,326 @@
+
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root{
+
+    --width1: 530px;
+    --height1: 530px;
+    --filter1: blur(0px);
+    --z-index1: 10;
+    --left1 : 550px;
+
+    --width2: 300px;
+    --height2: 300px;
+    --filter2: blur(3px);
+    --z-index2: 9;
+    --left2: 1000px;
+
+    --width3: 200px;
+    --height3: 200px;
+    --filter3: blur(6px);
+    --z-index3: 8;
+    --left3: 1200px;
+
+    --width4: 100px;
+    --height4: 100px;
+    --filter4: blur(9px);
+    --z-index4: 7;
+    --left4: 1400px;
+
+    --width5: 200px;
+    --height5: 400px;
+    --filter5: blur(12px);  
+    --z-index5: 6;
+    --left5: 1600px;
+
+}
+
+.carousel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.citems{
+    width: 200px;
+}
+
+.cname{
+    display: none;
+}
+
+.cdetails{
+    display: none;
+}
+
+.carousel .citems img{
+    width: inherit;
+}
+
+.carousel .citems:nth-child(1){
+    position: relative;
+    width: 550px;
+    height: 550px;
+    filter: blur(0px);
+    z-index: 10;
+    left: 10px;
+    display: flex;
+    
+
+}
+
+.carousel .citems:nth-child(1) img{
+    position: relative;
+    width: var(--width1);
+    height: var(--height1);
+    filter: var(--filter1);
+    z-index: var(--z-index1);
+    left: var(--left1);
+    align-self: center;
+    object-fit: contain;
+    display: flex;
+
+    animation: showImage1 1s ease-in-out 0s 1 forwards;
+
+}
+
+@keyframes showImage1 {
+    from{
+        width: var(--width2);
+        height: var(--height2);
+        filter: var(--filter2);
+        z-index: var(--z-index2);
+        left: var(--left2)
+    };
+    to{
+        width: var(--width1);
+        height: var(--height1);
+        filter: var(--filter1);
+        z-index: var(--z-index1);
+        left: var(--left1)
+
+    } 
+}
+
+
+.carousel .citems:nth-child(1) .cname{
+    display: block;
+    font-size: 100px;
+    position: absolute;
+    bottom: 200px;
+    left: 30px;
+    animation: showCname 0.7s ease-out 0s 1 forwards;
+
+}
+
+@keyframes showCname {
+    from{
+        filter: blur(3px);
+        transform: translateX(-200px)
+    };
+    to{
+        filter: blur(0px);
+        transform: translateX(0px)
+
+    }
+}
+
+@keyframes showData {
+    from{
+        filter: blur(3px);
+        transform: translateY(200px)
+    };
+    to{
+        filter: blur(0px);
+        transform: translateY(0px)
+
+    } 
+}
+
+
+.carousel .citems:nth-child(1) .cdetails{
+    display: block;
+    font-size: 20px;
+    position: absolute;
+    top: 250px;
+    width: 400px;
+
+    animation: showData 0.7s ease-out 0s 1 forwards;
+
+
+    left: 30px;
+}
+
+
+.carousel .citems:nth-child(2){
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    filter: blur(3px);
+    z-index: 9;
+    left: 1000px;
+
+    animation: showImage2 1s ease-in-out 0s 1 forwards;
+
+}
+
+@keyframes showImage2 {
+    from{
+        width: var(--width3);
+        height: var(--height3);
+        filter: var(--filter3);
+        z-index: var(--z-index3);
+        left: var(--left3)
+    };
+    to{
+        width: var(--width2);
+        height: var(--height2);
+        filter: var(--filter2);
+        z-index: var(--z-index2);
+        left: var(--left2)
+
+    } 
+}
+
+@keyframes showImage3 {
+    from{
+        width: var(--width4);
+        height: var(--height4);
+        filter: var(--filter4);
+        z-index: var(--z-index4);
+        left: var(--left4)
+    };
+    to{
+        width: var(--width3);
+        height: var(--height3);
+        filter: var(--filter3);
+        z-index: var(--z-index3);
+        left: var(--left3)
+
+    } 
+}
+
+@keyframes showImage4 {
+    from{
+        width: var(--width5);
+        height: var(--height5);
+        filter: var(--filter5);
+        z-index: var(--z-index5);
+        left: var(--left5)
+    };
+    to{
+        width: var(--width4);
+        height: var(--height4);
+        filter: var(--filter4);
+        z-index: var(--z-index4);
+        left: var(--left4)
+    } 
+}
+
+.carousel .citems:nth-child(0){
+    display: none;
+
+}
+
+.carousel .citems:nth-child(3){
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    filter: blur(6px);
+    z-index: 8;
+
+    left: 1200px;
+
+    animation: showImage3 1s ease-in-out 0s 1 forwards;
+
+}
+
+.carousel .citems:nth-child(4){
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    filter: blur(9px);
+    z-index: 7;
+
+    left: 1400px;
+
+    animation: showImage4 1s ease-in-out 0s 1 forwards;
+
+}
+
+.carousel .citems:nth-child(5){
+    position: relative;
+    width: 200px;
+    height: 400px;
+    filter: blur(12px);  
+    z-index: 6;
+    display: none;
+
+
+}
+
+.carousel .citems:nth-child(6){
+    position: relative;
+    width: 200px;
+    height: 400px;
+    filter: blur(10px); 
+    display: none; 
+    z-index: 5;
+
+    display: none;
+
+}
+
+.carousel .citems:nth-child(7){
+    position: relative;
+    width: 200px;
+    height: 400px;
+    filter: blur(10px); 
+    display: none; 
+    z-index: 5;
+
+    display: none;
+
+}
+
+
+.carbg{
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    background-color: rgb(150, 54, 172);
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index:-1;
+    border-radius: 20% 10% 40% 50%;
+    filter: blur(80px);
+}
+
+.cnavbuttons{
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 11;
+    margin: 20px;
+    background-color:rgb(150, 54, 172); 
+    color: white;
+}
+#prev{
+    left: 0px;
+    bottom: 200px;
+    border: none;
+}
+
+#next{
+    right: 0px;
+    bottom: 200px;
+    border: none;
+}
