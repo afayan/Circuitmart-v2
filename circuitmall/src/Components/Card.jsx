@@ -8,10 +8,10 @@ function Card(props) {
     
     <div className='card'>
       <img src={props.image} alt="image"/>
-      <p className="cardbottom">
+      <p className="cardbottom">  </p>
         <p className="devicename">{props.name}</p> 
         <p className="cardprice">&#8377; {props.price}</p>
-      </p>
+    
     </div>
     </Link>
   )

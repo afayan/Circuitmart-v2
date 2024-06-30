@@ -1,0 +1,67 @@
+/* <div className="productContent">
+        <div className="right">
+          <img src={productInfo.imageurl} alt="" />
+          <button>Buy</button>
+        </div>
+        <div className="productdetails">
+          <h1>{productInfo.device}</h1>
+          <p className="price large">
+          &#8377; {productInfo.price}
+          </p>
+
+          <p className="description">
+            {productInfo.description}
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, officiis magni tenetur unde quibusdam sit beatae illum iusto incidunt eligendi ullam architecto voluptas aspernatur fugit odio quia, qui odit nemo veritatis excepturi repudiandae consequatur quam modi quisquam! Laudantium, delectus quaerat.
+          </p>
+        </div>
+      </div> */
+
+.productContent{
+    padding: 20px;
+    /* display: grid;
+    grid-template-columns: 40% 60%; */
+
+    display: flex;
+    height: fit-content;
+    margin: 20px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+}
+
+.right img{
+
+    width: 100%;
+    border-radius: 20px;
+}
+
+.right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.productdetails{
+    flex: 1.5;
+    padding: 30px;
+    margin: 30px;
+    
+}
+
+.productButtons{
+  margin-top: 40px;
+  padding: 20px;
+  width: 50%;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background-color:rgb(150, 54, 172);
+  color: white; 
+
+}
