@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "../Components/Productpage.css"
+import Cart from '../Components/Cart';
 
 function Productpage(props) {
   const serverLocation = 'http://localhost/cktmart/circuitmartapi.php';
@@ -24,27 +25,20 @@ function Productpage(props) {
           }).then(function(response) {
             return response.json()
           }).then((data)=>{
-            console.log(data);
             setProductInfo(data[0])
           })        
     },[])
 
 
-    function addToCart(prodInfo) {
+    function addToCart(productInfo) {
+      const cart  = localStorage.getItem('cart')
+      const cart2 = JSON.parse(cart)
+      cart2.push(productInfo)
 
-       let myCart = localStorage.getItem('cart');
+      console.log(cart2);
+      localStorage.setItem('cart', JSON.stringify(cart2))
 
-    if (myCart) {
-      myCart = JSON.parse(myCart);
-    } else {
-      myCart = [];
-    }
-
-    myCart.push(prodInfo);
-
-    localStorage.setItem('cart', JSON.stringify(myCart));
-
-    console.log(localStorage.getItem('cart'));
+      alert(productInfo.device+"added to cart")
       
     }
 

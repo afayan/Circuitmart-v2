@@ -106,3 +106,15 @@ body{
     height: 130px;
     object-fit: contain;
 }
+
+.cartCount{
+    position: absolute;
+    padding: 8px;
+    width: fit-content;
+    border-radius: 20px;
+    font-size: 11px;
+    background-color: rgb(220, 104, 104);
+    top: 10px;
+    right: 7px;
+    color: white;
+}

@@ -8,22 +8,16 @@ function Home() {
   const serverLocation = 'http://localhost/cktmart/circuitmartapi.php';
   const [dataToShow, setData] = useState([])
 
-useEffect(()=>{
-  if (localStorage.getItem('cart') === null) {
-    localStorage.setItem('cart', JSON.stringify([]));
-  }
 
-})
-
+  const [cart, setCart] = useState(() => {
+    // Initialize cart from localStorage
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   
   
   useEffect(
     function getData() {
-
-     
-
-      
-
       fetch(serverLocation,
         {
           method: 'post',
