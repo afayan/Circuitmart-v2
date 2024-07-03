@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "../Components/Productpage.css"
 import Cart from '../Components/Cart';
+import Header from '../Components/Header';
 
 function Productpage(props) {
   const serverLocation = 'http://localhost/cktmart/circuitmartapi.php';
@@ -37,9 +38,10 @@ function Productpage(props) {
 
       console.log(cart2);
       localStorage.setItem('cart', JSON.stringify(cart2))
-
-      alert(productInfo.device+"added to cart")
+      alert(productInfo.device+"added to cart")    
       
+      
+      props.setCartLen(200)
     }
 
 
@@ -48,7 +50,7 @@ function Productpage(props) {
     <>
       <div className="productContent">
         <div className="right">
-          <img src={productInfo.imageurl} alt="" />
+          <img src={productInfo.imageurl} alt=""/>
         <span>
 
           <button className='productButtons'>Buy</button>

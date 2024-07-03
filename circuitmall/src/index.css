@@ -118,3 +118,7 @@ body{
     right: 7px;
     color: white;
 }
+
+.navtopbuttons{
+    display: inline;
+}

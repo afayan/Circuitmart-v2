@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import Cart from "./Cart";
+import '../index.css'
 
-function Header() {
 
-  // const no = JSON.parse(localStorage.getItem('cart'))
-  // useEffect(function () {
-  //   setCartlen
-  // })
-  // const [cartlen,setCartlen] = useState(()=>{
-  //   if (!no) {
-  //     return 0
-  //   }
-  //   else{
-  //     return no.length
-  //   }
-  // })
+function Header(props) {
 
-  const [cartlen, setCartlen] = useState(0)
 
 
   return (
@@ -24,12 +13,18 @@ function Header() {
       <div className="topNav">
         <p>Aumano</p>
 
+        {/* <cartContext.Provider value={{cartlen, setCartlen}}>
+
+        </cartContext.Provider> */}
+        
+
         <span>
           <button className="navtopbuttons">Hello</button>
-          <div className="cartCount">{cartlen}</div>
-          <button className="navtopbuttons">cart</button>
+          <button className='navtopbuttons'>Cart</button>
+          <div className="cartCount">{props.cartlen}</div>
         </span>
       </div>
+
 
       <div className="bottomNav">
         <Navbuttons title={"Home"} to={"/Home"} />
@@ -37,6 +32,7 @@ function Header() {
         <Navbuttons title={"FIlter"} to={"/FIlter"} />
         <Navbuttons title={"Search"} to={"/Search"} />
       </div>
+   
     </div>
   );
 }
@@ -55,4 +51,3 @@ function Navbuttons({ title, to, ...props }) {
     </Link>
   );
 }
-
