@@ -13,11 +13,10 @@ import { useContext, createContext } from "react";
 function App() {
 
   const [cartlen, setCartlen] = useState(0)
-  const CartContext = createContext()
 
   return (
     <>
-  <CartContext.Provider value={{cartlen, setCartlen}}>
+  {/* <CartContext.Provider> */}
       <Header cartlen = {cartlen} setCartlen = {setCartlen}/>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,9 +24,9 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Filter" element={<Filter />} />
           <Route path="/Search" element={<Search />} />
-          <Route path="/Productpage" element={<Productpage setCartlen = {setCartlen}/>} />
+          <Route path="/Productpage" element={<Productpage setCartlen = {setCartlen} funval = {9}/>} />
         </Routes>
-   </CartContext.Provider>
+   {/* </CartContext.Provider> */}
     </>
   );
 }

@@ -40,8 +40,8 @@ function Productpage(props) {
       localStorage.setItem('cart', JSON.stringify(cart2))
       alert(productInfo.device+"added to cart")    
       
-      
-      props.setCartLen(200)
+      console.log(props.funval);
+      props.setCartlen(c => c+1)
     }
 
 

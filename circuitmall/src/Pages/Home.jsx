@@ -42,7 +42,8 @@ function Home() {
       <div className='cardcontainer'>
       {
         dataToShow.map((element) => {
-         return <Card key = {element.deviceid} image = {element.imageurl} name = {element.device} deviceid = {element.deviceid}
+         return <Card key = {element.deviceid} 
+         image = {element.imageurl} name = {element.device} deviceid = {element.deviceid}
          price = {element.price}
          />
         }
