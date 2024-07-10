@@ -20,8 +20,12 @@ function Header(props) {
 
         <span>
           <button className="navtopbuttons">Hello</button>
+
+          <Link to={'/Cart'}>
           <button className='navtopbuttons'>Cart</button>
           <div className="cartCount">{props.cartlen}</div>
+          </Link>
+
         </span>
       </div>
 

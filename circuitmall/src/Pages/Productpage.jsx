@@ -8,7 +8,8 @@ function Productpage(props) {
 
   
   const [productInfo, setProductInfo] = useState()
-  
+  const [productCounter, setProductCounter] = useState(1)
+   
   useEffect( 
     function configure() {
         const queryParameters = new URLSearchParams(window.location.search)
@@ -30,11 +31,26 @@ function Productpage(props) {
           })        
     },[])
 
+    function count(operation) {
+      
+      if (operation === 'add'){
+        setProductCounter(c=>c+1)
+      }
+
+      else if(operation === 'sub'){
+      if (productCounter > 1) {  
+        setProductCounter(c=> c-1)
+        }
+      }
+    }
+
 
     function addToCart(productInfo) {
       const cart  = localStorage.getItem('cart')
       const cart2 = JSON.parse(cart)
+      productInfo.count = productCounter
       cart2.push(productInfo)
+
 
       console.log(cart2);
       localStorage.setItem('cart', JSON.stringify(cart2))
@@ -69,6 +85,12 @@ function Productpage(props) {
 
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, officiis magni tenetur unde quibusdam sit beatae illum iusto incidunt eligendi ullam architecto voluptas aspernatur fugit odio quia, qui odit nemo veritatis excepturi repudiandae consequatur quam modi quisquam! Laudantium, delectus quaerat.
           </p>
+
+          <div className="counter">
+            <button className="dec" onClick={()=>{count('sub')}}>-</button>
+            {productCounter}
+            <button className="inc" onClick={()=>{count('add')}}>+</button>
+          </div>
         </div>
       </div>
 
