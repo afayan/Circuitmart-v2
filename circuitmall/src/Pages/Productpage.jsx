@@ -9,16 +9,22 @@ function Productpage(props) {
   
   const [productInfo, setProductInfo] = useState()
   const [productCounter, setProductCounter] = useState(1)
+  const [incart, setIncart] = useState(false)
+
+
+  useEffect(()=>{
+    console.log("Cart changed");
+  },[incart])
    
   useEffect( 
     function configure() {
         const queryParameters = new URLSearchParams(window.location.search)
-          const type = queryParameters.get("id")
-          console.log("Type is "+type);
+          const deviceid = queryParameters.get("id")
+          console.log("Type is "+deviceid);
 
           var c = {
             stype: "productInfo",
-            id: type
+            id: deviceid
           }
 
           fetch(serverLocation,{
@@ -28,7 +34,18 @@ function Productpage(props) {
             return response.json()
           }).then((data)=>{
             setProductInfo(data[0])
-          })        
+
+           const cart = JSON.parse(localStorage.getItem('cart'))
+
+           cart.forEach(prod => {
+            // console.log(prod);
+
+            if(prod.deviceid === deviceid){
+              setIncart(f => true)
+            }
+           });
+          })
+          
     },[])
 
     function count(operation) {
@@ -48,16 +65,30 @@ function Productpage(props) {
     function addToCart(productInfo) {
       const cart  = localStorage.getItem('cart')
       const cart2 = JSON.parse(cart)
+      console.log(cart2);
       productInfo.count = productCounter
-      cart2.push(productInfo)
+
+      if (incart) {
+        cart2.forEach(element => {
+          if(element.deviceid === deviceid){
+            element.count += productCounter
+          }
+        });
+      }
+
+      else{
+        cart2.push(productInfo)
+      }
 
 
       console.log(cart2);
       localStorage.setItem('cart', JSON.stringify(cart2))
-      alert(productInfo.device+"added to cart")    
+      // alert(productInfo.device+"added to cart")    
       
       console.log(props.funval);
       props.setCartlen(c => c+1)
+
+      setIncart(true)
     }
 
 
@@ -70,7 +101,7 @@ function Productpage(props) {
         <span>
 
           <button className='productButtons'>Buy</button>
-          <button className='productButtons' onClick={()=>{addToCart(productInfo)}}>Add to cart</button>
+          {incart? <button className='productButtons' >Added</button>: <button className='productButtons' onClick={()=>{addToCart(productInfo)}}>Add to cart</button>}        
         </span>
 
         </div>
@@ -82,7 +113,6 @@ function Productpage(props) {
 
           <p className="description">
             {productInfo.description}
-
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, officiis magni tenetur unde quibusdam sit beatae illum iusto incidunt eligendi ullam architecto voluptas aspernatur fugit odio quia, qui odit nemo veritatis excepturi repudiandae consequatur quam modi quisquam! Laudantium, delectus quaerat.
           </p>
 
@@ -93,7 +123,6 @@ function Productpage(props) {
           </div>
         </div>
       </div>
-
     </>
     )
     

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './Productpage.css'
 import '../index.css'
 import '../Components/Header.jsx'
 import Header from '../Components/Header.jsx'
@@ -14,6 +15,7 @@ function Cart(props) {
   function saveChanges() {
     props.setCartlen(cart.length)
     localStorage.setItem('cart', JSON.stringify(cart))
+    alert("Changes saved")
   }
 
 
@@ -52,7 +54,12 @@ function CartButtons(props) {
   <div className="cartbuttons">
     <img src= {props.element.imageurl} alt="" />
     <p> {props.element.device} </p> 
+
+    <button className="dec" id='b1'>-</button>
     <p>{count}</p>
+    <button className="inc" id='b1'>+</button>
+
+
     <p>{props.element.price}</p>
     <button onClick={()=>{
       props.setcart(c => c.filter(
